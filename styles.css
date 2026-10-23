@@ -438,6 +438,49 @@ ul {
   margin-bottom: var(--sp-3);
 }
 
+/* Affiliation wordmarks */
+.team-affiliations {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-6);
+  margin-top: var(--sp-5);
+}
+
+/* Specificity here must beat `.team-card img` so the wordmarks opt out of the
+   portrait sizing (fixed width, 3:4 crop) they would otherwise inherit.
+   Capping both height and width keeps the compact marks (Yale, UCLA) and the
+   wide two-line lockups (Chicago, Imperial) at a similar optical weight. */
+.team-lead-bio .team-affiliations img,
+.team-card .team-affiliations img {
+  width: auto;
+  height: 26px;
+  max-width: 104px;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+/* Optical balancing. A single word set at full height (Berkeley, Yale) reads
+   much heavier than a crest-plus-small-caps lockup (Oxford, Harvard) at that
+   same height, so the two groups are sized against each other rather than
+   against the box. */
+.team-affiliations img[src*="berkeley"],
+.team-affiliations img[src*="yale"],
+.team-affiliations img[src*="ucla"],
+.team-affiliations img[src*="amazon"],
+.team-affiliations img[src*="roblox"] {
+  height: 21px;
+}
+
+.team-affiliations img[src*="oxford"],
+.team-affiliations img[src*="harvard"] {
+  height: 32px;
+  max-width: 124px;
+}
+
 /* ============================================================
    CTA
    ============================================================ */
@@ -1004,6 +1047,31 @@ ul {
 
   .team-card img {
     width: 100px;
+  }
+
+  .team-affiliations {
+    gap: var(--sp-5);
+    margin-top: var(--sp-4);
+  }
+
+  .team-lead-bio .team-affiliations img,
+  .team-card .team-affiliations img {
+    height: 22px;
+    max-width: 86px;
+  }
+
+  .team-affiliations img[src*="berkeley"],
+  .team-affiliations img[src*="yale"],
+  .team-affiliations img[src*="ucla"],
+  .team-affiliations img[src*="amazon"],
+  .team-affiliations img[src*="roblox"] {
+    height: 18px;
+  }
+
+  .team-affiliations img[src*="oxford"],
+  .team-affiliations img[src*="harvard"] {
+    height: 27px;
+    max-width: 104px;
   }
 
   .case-studies-grid {
